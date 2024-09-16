@@ -60,6 +60,8 @@ class OAuthLogin(Home):
         for provider in providers:
             return_url = request.httprequest.url_root + 'auth_oauth/signin'
             _logger.info("Returned url in OAuthLogin: %s", return_url)
+            return_url = return_url.replace("http://", "https://")
+            _logger.info("Returned url is now fixed in OAuthLogin: %s", return_url)
             try:
                 url = (request.env['ir.config_parameter'].get_param('web.base.url'))
             except Exception:
