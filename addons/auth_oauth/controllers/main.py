@@ -60,7 +60,10 @@ class OAuthLogin(Home):
         for provider in providers:
             return_url = request.httprequest.url_root + 'auth_oauth/signin'
             _logger.info("Returned url in OAuthLogin: %s", return_url)
-            url = (request.env['ir.config_parameter'].get_param('web.base.url'))
+            try:
+                url = (request.env['ir.config_parameter'].get_param('web.base.url'))
+            except Exception:
+                url = "blank"
             _logger.info("this is the url i got: %s", url)
 
             state = self.get_state(provider)
