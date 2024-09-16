@@ -59,6 +59,10 @@ class OAuthLogin(Home):
             providers = []
         for provider in providers:
             return_url = request.httprequest.url_root + 'auth_oauth/signin'
+            _logger.info("Returned url in OAuthLogin: %s", return_url)
+            url = (self.env['ir.config_parameter'].get_param('web.base.url'))
+            _logger.info("this is the url i got: %s", url)
+
             state = self.get_state(provider)
             params = dict(
                 response_type='token',
