@@ -104,6 +104,7 @@ class OAuthLogin(Home):
                 error = _("Sign up is not allowed on this database.")
             elif error == '2':
                 error = _("Access Denied")
+                _logger.info("error 2 response: %s, request: %s", str(response), str(request))
             elif error == '3':
                 error = _("You do not have access to this database or your invitation has expired. Please ask for an invitation and be sure to follow the link in your invitation email.")
             else:
